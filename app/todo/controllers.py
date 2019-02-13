@@ -69,3 +69,15 @@ def edit(id: int):
         form = TodoForm(obj=todo)
 
     return render_template('todo/form.html', form=form)
+
+
+@todo.route('/delete/<int:id>/', methods=['GET', 'POST'])
+def delete(id: int):
+    if request.method == 'POST':
+        todo = Todo.get_todo_by_id(id)
+
+        todo.delete()
+
+        return redirect(url_for('todo.list'))
+    else:
+        return render_template('todo/delete_confirm.html', id=id)
