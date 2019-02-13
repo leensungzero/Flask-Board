@@ -18,7 +18,7 @@ class Todo(Base):
     title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.String(2000), nullable=False)
 
-    def __int__(self, title, content):
+    def __init__(self, title: str, content: str):
         self.title = title
         self.content = content
 
