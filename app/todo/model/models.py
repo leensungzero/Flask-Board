@@ -1,5 +1,7 @@
 from app import db
 
+from app.todo.model.mixins import BaseMixin
+
 
 class Base(db.Model):
     __abstract__ = True
@@ -10,7 +12,7 @@ class Base(db.Model):
                               onupdate=db.func.current_timestamp())
 
 
-class Todo(Base):
+class Todo(Base, BaseMixin):
     # Todo: author, image 추가 계획
 
     __tablename__ = 'todo_todo'
