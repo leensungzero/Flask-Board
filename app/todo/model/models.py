@@ -29,7 +29,7 @@ class Todo(Base, BaseMixin):
 
     @staticmethod
     def add_todo(title: str, content: str):
-        Todo(title, content).save()
+        return Todo(title, content).save()
 
     @staticmethod
     def get_todo_all():

@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, flash
+from flask import Blueprint, request, render_template, flash, redirect, url_for
 
 from app.todo.forms import TodoForm
 from app.todo.model.models import Todo
@@ -15,9 +15,9 @@ def create():
 
         title = request.form['title']
         name = request.form['content']
-        Todo.add_todo(title, name)
+        todo = Todo.add_todo(title, name)
         flash('글 작성 완료')
-        return 'success', 200
+        return redirect(url_for('todo.detail', id=todo.id))
 
     flash('글 작성 중 오류 발생', 'error-message')
 
