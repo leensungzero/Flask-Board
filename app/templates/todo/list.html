@@ -3,7 +3,7 @@
 {% for todo in todo_list %}
     <hr>
     Title: {{ todo.title }}<br>
-    Content: {{ todo.content }}<br>
+    Content: {{ todo.content }} <a href="{{ url_for('todo.detail', id=todo.id) }}">자세히보기</a><br>
 {% endfor %}
     <hr>
     <a href="{{ url_for('todo.create') }}"><button type="button">글쓰기</button></a>

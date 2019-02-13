@@ -32,6 +32,7 @@ def list():
     print(query)
 
     todo_list = ([{
+        'id': todo.id,
         'title': todo.title,
         'content': todo.content
     } for todo in query])
