@@ -1,0 +1,9 @@
+<div>
+    <div>
+        <form action="" method="POST" accept-charset="UTF-8">
+            {{ form.csrf_token }}
+            {{ render_field(form.title, placeholder="제목을 입력해주세요", autofocus="") }}
+            {{ render_field(form.content, placeholder="내용을 입력해주세요") }}
+        </form>
+    </div>
+</div>
