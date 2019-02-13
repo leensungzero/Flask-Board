@@ -3,8 +3,6 @@ from flask import Blueprint, request, render_template, flash
 from app.todo.forms import TodoForm
 from app.todo.model.models import Todo
 
-import json
-
 todo = Blueprint('todo', __name__)
 
 @todo.route('/create/', methods=['GET', 'POST'])
@@ -29,7 +27,6 @@ def create():
 @todo.route('/', methods=['GET'])
 def list():
     query = Todo.get_todo_all()
-    print(query)
 
     todo_list = ([{
         'id': todo.id,
