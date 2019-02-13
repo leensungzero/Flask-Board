@@ -1,0 +1,10 @@
+{% block content %}
+    <h2>Todo List</h2>
+{% for todo in todo_list %}
+    <hr>
+    Title: {{ todo.title }}<br>
+    Content: {{ todo.content }}<br>
+{% endfor %}
+    <hr>
+    <a href=""><button type="button">글쓰기</button></a>
+{% endblock %}

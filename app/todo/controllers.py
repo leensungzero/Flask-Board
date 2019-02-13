@@ -28,10 +28,13 @@ def create():
 
 @todo.route('/', methods=['GET'])
 def list():
-    todo_list = Todo.get_todo_all()
-    print(todo_list)
+    query = Todo.get_todo_all()
+    print(query)
 
-    return json.dumps([{
+    todo_list = ([{
         'title': todo.title,
         'content': todo.content
-    } for todo in todo_list]), 200
+    } for todo in query])
+
+
+    return render_template('todo/list.html', todo_list=todo_list), 200
