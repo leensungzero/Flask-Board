@@ -34,3 +34,7 @@ class Todo(Base, BaseMixin):
     @staticmethod
     def get_todo_all():
         return Todo.query.all()
+
+    @staticmethod
+    def get_todo_by_id(id: int):
+        return Todo.query.filter_by(id=id).first()

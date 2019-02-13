@@ -38,3 +38,11 @@ def list():
 
 
     return render_template('todo/list.html', todo_list=todo_list), 200
+
+
+@todo.route('/detail/<int:id>/', methods=['GET', 'POST'])
+def detail(id):
+    obj = Todo.get_todo_by_id(id)
+    print(obj)
+
+    return obj.titled
