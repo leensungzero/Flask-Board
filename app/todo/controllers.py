@@ -42,7 +42,6 @@ def list():
 
 @todo.route('/detail/<int:id>/', methods=['GET', 'POST'])
 def detail(id):
-    obj = Todo.get_todo_by_id(id)
-    print(obj)
+    todo = Todo.get_todo_by_id(id)
 
-    return obj.titled
+    return render_template('todo/detail.html', todo=todo)

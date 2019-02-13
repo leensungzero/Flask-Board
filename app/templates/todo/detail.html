@@ -1,0 +1,7 @@
+{% block content %}
+<h2>todo.title</h2>
+<hr>
+    {{ todo.content }}
+<hr>
+<a href="{{ url_for('todo.list') }}"><button>홈으로</button></a>
+{% endblock %}
