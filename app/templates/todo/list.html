@@ -6,5 +6,5 @@
     Content: {{ todo.content }}<br>
 {% endfor %}
     <hr>
-    <a href=""><button type="button">글쓰기</button></a>
+    <a href="{{ url_for('todo.create') }}"><button type="button">글쓰기</button></a>
 {% endblock %}

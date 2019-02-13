@@ -21,6 +21,7 @@
         {{ render_field(form.title, placeholder="제목을 입력해주세요", autofocus="") }}
         {{ render_field(form.content, placeholder="내용을 입력해주세요") }}
         <button type="submit" name="submit">글쓰기</button>
+        <a href="{{ url_for('todo.list') }}">홈으로</a>
     </fieldset>
 </form>
 {% endblock %}
