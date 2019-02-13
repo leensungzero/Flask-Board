@@ -2,6 +2,7 @@ from flask import Blueprint, request, render_template, flash, redirect, url_for
 
 from app.todo.forms import TodoForm
 from app.todo.model.models import Todo
+from app import db
 
 todo = Blueprint('todo', __name__)
 
@@ -47,8 +48,24 @@ def detail(id: int):
 
 @todo.route('/update/<int:id>/', methods=['GET', 'POST'])
 def edit(id: int):
-    todo = Todo.get_todo_by_id(id)
+    # Todo: 이 로직 최적화 가능하면 나중에 하기
+    if request.method == 'POST':
+        form = TodoForm(request.form)
 
-    form = TodoForm(obj=todo)
+        if form.validate_on_submit():
+            title = request.form['title']
+            content = request.form['content']
+
+            todo = Todo.get_todo_by_id(id)
+            todo.title = title
+            todo.content = content
+
+            db.session.commit()
+
+            return redirect(url_for('todo.detail', id=todo.id))
+    else:
+        todo = Todo.get_todo_by_id(id)
+
+        form = TodoForm(obj=todo)
 
     return render_template('todo/form.html', form=form)
