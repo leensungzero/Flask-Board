@@ -26,3 +26,7 @@ class Todo(Base, BaseMixin):
 
     def __repr__(self):
         return '<Title - %r>' % (self.title)
+
+    @staticmethod
+    def add_todo(title: str, content: str):
+        Todo(title, content).save()
