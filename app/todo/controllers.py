@@ -39,7 +39,16 @@ def list():
 
 
 @todo.route('/detail/<int:id>/', methods=['GET', 'POST'])
-def detail(id):
+def detail(id: int):
     todo = Todo.get_todo_by_id(id)
 
     return render_template('todo/detail.html', todo=todo)
+
+
+@todo.route('/update/<int:id>/', methods=['GET', 'POST'])
+def edit(id: int):
+    todo = Todo.get_todo_by_id(id)
+
+    form = TodoForm(obj=todo)
+
+    return render_template('todo/form.html', form=form)
