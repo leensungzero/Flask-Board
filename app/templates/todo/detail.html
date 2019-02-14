@@ -4,4 +4,5 @@
     {{ todo.content }}
 <hr>
 <a href="{{ url_for('todo.list') }}"><button>홈으로</button></a>
+    <a href="{{ url_for('todo.delete', id=todo.id) }}"><button>삭제하기</button></a>
 {% endblock %}
