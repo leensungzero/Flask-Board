@@ -2,5 +2,6 @@
 <form action="" method="POST">
     <p>정말로 {{ id }} 번 글을 삭제하시겠습니까?</p>
     <button type="submit">삭제하기</button>
+    <a href="{{ url_for('todo.list') }}">취소</a>
 </form>
 {% endblock %}
