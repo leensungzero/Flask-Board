@@ -47,7 +47,7 @@ def detail(id: int):
 
 
 @todo.route('/update/<int:id>/', methods=['GET', 'POST'])
-def edit(id: int):
+def update(id: int):
     # Todo: 이 로직 최적화 가능하면 나중에 하기
     if request.method == 'POST':
         form = TodoForm(request.form)
