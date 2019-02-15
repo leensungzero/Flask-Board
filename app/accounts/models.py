@@ -40,3 +40,9 @@ class User(BaseModel, BaseMixin):
     @staticmethod
     def get_user_by_email(email: str):
         return User.query.filter_by(email=email).first()
+
+    @staticmethod
+    def signin(email: str, password: str):
+        user = User.get_user_by_email(email)
+
+        return user.check_password(password)

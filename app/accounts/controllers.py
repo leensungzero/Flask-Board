@@ -16,8 +16,13 @@ def signup():
         name = request.form['name']
         password = request.form['password']
 
-        user = User.signup(email, name, password)
+        User.signup(email, name, password)
 
         return redirect(url_for('todo.list'))
 
     return render_template('accounts/signup.html', form=form)
+
+
+@account.route('/signin/', method=['GET', 'POST'])
+def signin():
+    pass

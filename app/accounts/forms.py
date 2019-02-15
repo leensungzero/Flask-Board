@@ -14,3 +14,12 @@ class SignupForm(FlaskForm):
     password = PasswordField('패스워드', [
         DataRequired(message='패스워드는 필수 입력입니다.')
     ])
+
+
+class SigninForm(FlaskForm):
+    email = StringField('아이디', [
+        DataRequired(message='아이디를 입력해주세요.')
+    ])
+    password = PasswordField('패스워드', [
+        DataRequired(message='패스워드를 입력해주세요.')
+    ])
