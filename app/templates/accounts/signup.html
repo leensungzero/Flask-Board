@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% macro render_field(field, placeholder=None) %}
+{% if field.errors %}
+<div>
+{% elif field.flags.error %}
+<div>
+{% else %}
+<div>
+{% endif %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+</div>
+{% endmacro %}
+
+{% block content %}
+<form action="" method="POST" accept-charset="UTF-8">
+    <fieldset>
+        <legend>회원가입</legend>
+        {{ form.csrf_token }}
+        {{ render_field(form.email, placeholder="아이디를 입력해주세요", autofocus="") }}
+        {{ render_field(form.name, placeholder="이름을 입력해주세요") }}
+        {{ render_field(form.password, placeholder="패스워드를 입력해주세요") }}
+        <button type="submit" name="submit">글쓰기</button>
+        <a href="{{ url_for('todo.list') }}">홈으로</a>
+    </fieldset>
+</form>
+{% endblock %}
