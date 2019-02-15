@@ -1,18 +1,10 @@
 from app import db
 
-from app.todo.model.mixins import BaseMixin
+from app.util.mixins import BaseMixin
+from app.util.models import BaseModel
 
 
-class Base(db.Model):
-    __abstract__ = True
-
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-                              onupdate=db.func.current_timestamp())
-
-
-class Todo(Base, BaseMixin):
+class Todo(BaseModel, BaseMixin):
     # Todo: author, image 추가 계획
 
     __tablename__ = 'todo_todo'
