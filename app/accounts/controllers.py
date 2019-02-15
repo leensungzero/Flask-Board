@@ -1,5 +1,7 @@
 from flask import Blueprint, request, render_template, redirect, url_for
 
+from flask_login import login_user
+
 from app import db
 from app.accounts.models import User
 from app.accounts.forms import SignupForm, SigninForm
@@ -33,7 +35,11 @@ def signin():
 
         login_status = User.signin(email, password)
 
-        if login_status:
+        if login_status[0]:
+            user = login_status[1]
+            user.authenticated = True
+            db.session.commit()
+            login_user(user, remember=True)
             return "login success"
         else:
             return "login failed"
