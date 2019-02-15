@@ -11,4 +11,13 @@ account = Blueprint('account', __name__, url_prefix='/account/')
 def signup():
     form = SignupForm(request.form)
 
+    if form.validate_on_submit():
+        email = request.form['email']
+        name = request.form['name']
+        password = request.form['password']
+
+        user = User.signup(email, name, password)
+
+        return user.name
+
     return render_template('accounts/signup.html', form=form)
