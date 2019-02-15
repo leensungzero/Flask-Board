@@ -31,6 +31,8 @@ class User(BaseModel, BaseMixin):
         return value
 
     def check_password(self, password: str):
+        print(self.password)
+        print(password)
         return check_password_hash(self.password, password)
 
     @staticmethod
@@ -44,5 +46,9 @@ class User(BaseModel, BaseMixin):
     @staticmethod
     def signin(email: str, password: str):
         user = User.get_user_by_email(email)
+
+        print(user)
+
+        print("email", email, "password", password)
 
         return user.check_password(password)

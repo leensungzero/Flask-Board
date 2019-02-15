@@ -2,7 +2,7 @@ from flask import Blueprint, request, render_template, redirect, url_for
 
 from app import db
 from app.accounts.models import User
-from app.accounts.forms import SignupForm
+from app.accounts.forms import SignupForm, SigninForm
 
 
 account = Blueprint('account', __name__, url_prefix='/account/')
@@ -23,6 +23,19 @@ def signup():
     return render_template('accounts/signup.html', form=form)
 
 
-@account.route('/signin/', method=['GET', 'POST'])
+@account.route('/signin/', methods=['GET', 'POST'])
 def signin():
-    pass
+    form = SigninForm(request.form)
+
+    if form.validate_on_submit():
+        email = request.form['email']
+        password = request.form['password']
+
+        login_status = User.signin(email, password)
+
+        if login_status:
+            return "login success"
+        else:
+            return "login failed"
+
+    return render_template('accounts/signin.html', form=form)
