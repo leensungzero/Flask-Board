@@ -21,7 +21,7 @@
         {{ render_field(form.email, placeholder="아이디를 입력해주세요", autofocus="") }}
         {{ render_field(form.name, placeholder="이름을 입력해주세요") }}
         {{ render_field(form.password, placeholder="패스워드를 입력해주세요") }}
-        <button type="submit" name="submit">글쓰기</button>
+        <button type="submit" name="submit">회원가입</button>
         <a href="{{ url_for('todo.list') }}">홈으로</a>
     </fieldset>
 </form>

@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template
+from flask import Blueprint, request, render_template, redirect, url_for
 
 from app import db
 from app.accounts.models import User
@@ -18,6 +18,6 @@ def signup():
 
         user = User.signup(email, name, password)
 
-        return user.name
+        return redirect(url_for('todo.list'))
 
     return render_template('accounts/signup.html', form=form)

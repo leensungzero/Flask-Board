@@ -1,4 +1,4 @@
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db
 
@@ -30,6 +30,13 @@ class User(BaseModel, BaseMixin):
         assert '@' in value
         return value
 
+    def check_password(self, password: str):
+        return check_password_hash(self.password, password)
+
     @staticmethod
     def signup(email: str, name: str, password: str):
         return User(email, name, password).save()
+    
+    @staticmethod
+    def get_user_by_email(email: str):
+        return User.query.filter_by(email=email).first()
