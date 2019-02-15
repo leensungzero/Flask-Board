@@ -1,7 +1,7 @@
 from flask import Blueprint, request, render_template, flash, redirect, url_for
 
 from app.todo.forms import TodoForm
-from app.todo.model.models import Todo
+from app.todo.models import Todo
 from app import db
 
 todo = Blueprint('todo', __name__)
